@@ -1,0 +1,34 @@
+namespace OOAP_2._7;
+
+abstract class Animal
+{
+    public virtual void MakeSound() =>
+        Console.WriteLine("Some sound");
+}
+
+class Dog : Animal
+{
+    public override void MakeSound() =>
+        Console.WriteLine("Bark");
+}
+
+class Cat : Animal
+{
+    public override void MakeSound() =>
+        Console.WriteLine("Meow");
+}
+
+class Client
+{
+    static void Method()
+    {
+        Animal myAnimal;
+
+        // Динамическое связывание - решение о том, какой именно метод MakeSound вызывать, принимается во время выполнения программы
+        myAnimal = new Dog();
+        myAnimal.MakeSound(); // Вывод: Bark
+
+        myAnimal = new Cat();
+        myAnimal.MakeSound(); // Вывод: Meow
+    }
+}
